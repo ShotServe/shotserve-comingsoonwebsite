@@ -1,0 +1,118 @@
+---
+import "../styles/main.css";
+
+const heading = "ShotServe";
+const subheading = "AI Powered Tennis Training App";
+const appIcon = "/images/logo2.png";
+const appScreenshot = "/images/App-design.png";
+const footerImage = "/images/footer.png";
+
+const badges = [
+  {
+    // text: "Coming Soon on the App Store",
+    image: "/images/app-store-comingSoon.jpeg",
+  },
+  {
+    // text: "Coming Soon on Google Play",
+    image: "/images/google-play-comingSoon.png",
+  },
+];
+
+const authors = [
+  {
+    name: "Rahul Gupta",
+    url: "https://rgupta.vercel.app",
+  },
+];
+
+const pageTitle = "ShotServe";
+const favicon = "/images/favicon.svg";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <div class="text-container">
+          <img src={appIcon} class="app-icon" />
+          <h1 class="heading">{heading}</h1>
+          <h2 class="subheading">{subheading}</h2>
+          <div class="badge-container">
+            {
+              badges.map((badge) => (
+                // <div>
+                // 	<a href={badge.link} target="_blank">
+                // 		<img src={badge.image} class="badge" />
+                // 	</a>
+                // </div>
+                <div class="badge-item">
+                  <img src={badge.image} class="badge" />
+                  {/* <p>{badge.text}</p> */}
+                </div>
+              ))
+            }
+          </div>
+          <p class="authors">
+            Made with &#x2665; by
+            {
+              authors.map((author, index) => (
+                <span>
+                  {index > 0
+                    ? index === authors.length - 1
+                      ? " and "
+                      : ", "
+                    : ""}
+                  <a href={author.url} target="_blank">
+                    {author.name}
+                  </a>
+                </span>
+              ))
+            }
+          </p>
+          <section class="early-access">
+            <h3>Sign Up for Early Access</h3>
+            <button id="typeform-open" class="typeform-button"
+              >Sign Up Now</button
+            >
+          </section>
+        </div>
+
+        <div>
+          <img src={appScreenshot} class="app-screenshot" />
+        </div>
+      </main>
+
+      <footer>
+        <img src={footerImage} class="footer-image" />
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var script = document.createElement("script");
+        script.src = "https://embed.typeform.com/embed.js";
+        script.async = true;
+        script.onload = function () {
+          document
+            .getElementById("typeform-open")
+            .addEventListener("click", function () {
+              window.typeformEmbed
+                .makePopup("https://ih1f66x1qnb.typeform.com/to/lxNsUxCD", {
+                  mode: "popup",
+                  autoClose: 3,
+                })
+                .open();
+            });
+        };
+        document.head.appendChild(script);
+      })();
+    </script>
+  </body>
+</html>
